@@ -1,0 +1,47 @@
+<div>
+    <div :class="['weui-search-bar',{'weui-search-bar_focusing':style1}]" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <i class="weui-icon-search"></i>
+                <input type="search" v-model="val" class="weui-search-bar__input" id="searchInput" placeholder="搜索"
+                    required=""  @blur="isok">
+                <a href="javascript:" class="weui-icon-clear" id="searchClear" @click="clear"></a>
+            </div>
+            <label class="weui-search-bar__label" id="searchText" @click="isok">
+                <i class="weui-icon-search"></i>
+                <span>搜索</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel" @click="isok">取消</a>
+    </div>
+    <div class="page__bd page__bd_spacing" style="margin-top: 55vw;">
+        <a href="javascript:;" class="weui-btn weui-btn_default" id="showIOSActionSheet" @click="mackisok = true" >iOS ActionSheet</a>
+        <a href="javascript:;" class="weui-btn weui-btn_default" id="showAndroidActionSheet" @click="mackisok2 = true">Android ActionSheet</a>
+    </div>
+    <div v-show="mackisok">
+        <div class="weui-mask" id="iosMask" style="opacity: 1;" @click="mackisok = false">{{mackisok}}</div>
+        <div class="weui-actionsheet weui-actionsheet_toggle" id="iosActionsheet">
+            <div class="weui-actionsheet__title">
+                <p class="weui-actionsheet__title-text">这是一个标题，可以为一行或者两行。</p>
+            </div>
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell">示例菜单</div>
+                <div class="weui-actionsheet__cell">示例菜单</div>
+                <div class="weui-actionsheet__cell weui-actionsheet__cell_warn">负向菜单</div>
+            </div>
+            <div class="weui-actionsheet__action">
+                <div class="weui-actionsheet__cell" id="iosActionsheetCancel" @click="mackisok = false">取消</div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-skin_android" id="androidActionsheet" style="opacity: 1;" v-show="mackisok2">
+        <div class="weui-mask" @click="mackisok2 = false"></div>
+        <div class="weui-actionsheet">
+            <div class="weui-actionsheet__menu">
+                <div class="weui-actionsheet__cell">示例菜单</div>
+                <div class="weui-actionsheet__cell">示例菜单</div>
+                <div class="weui-actionsheet__cell">示例菜单</div>
+            </div>
+        </div>
+    </div>
+</div>
