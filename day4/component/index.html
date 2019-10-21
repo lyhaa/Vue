@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <Home style="height: 30px;background-color:aquamarine">
+            <template v-slot:slot1>
+                <div>567814gygjfdsf</div>
+            </template>
+            <template v-slot:slot2>
+                <h1>wwdkf</h1>
+            </template>
+        </Home>
+        <List style="height: 30px;background-color: blueviolet"></List>
+        <My style="height: 30px;background-color:bisque"></My>
+        <component :is="isok" style="font-size: 30px;color: rgb(231, 220, 245)"></component>
+        <button @click="toggle('Home')">Home</button>
+        <button @click="toggle('List')">List</button>
+        <button @click="toggle('My')">My</button>
+    </div>
+    <script src="../vue.2.6.js"></script>
+    <script>
+        Vue.component('Home',{
+            // props: ['Nme'],
+            data () {
+                return {
+                    name:"Home"
+                }
+            },
+            template:`<div>{{name}}
+                <slot name="slot1"></slot>
+                <slot name="slot2"></slot>
+            </div>`
+        })
+        Vue.component('List',{
+            data () {
+                return {
+                    name:"List"
+                }
+            },
+            template:`<div>{{name}}</div>`
+        })
+        Vue.component('My',{
+            data () {
+                return {
+                    name:"My"
+                }
+            },
+            template:`<div>{{name}}</div>`
+        })
+        new Vue({
+            el:"#app",
+            data:{
+                isok:"Home"
+            },
+            // template:`<div>13241</div>`,
+            created () {
+                // console.log(this)
+            },
+            methods:{
+                toggle(_Path){
+                    this.isok = _Path;
+                }
+            }
+        })
+    </script>
+</body>
+</html>

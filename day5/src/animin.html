@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+       .slide-fade-enter-active {
+       transition: all .8s ease;
+       }
+       .slide-fade-leave-active {
+       transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+       }
+       .slide-fade-enter, .slide-fade-leave-to
+       /* .slide-fade-leave-active for below version 2.1.8 */ {
+       transform: translateX(10px);
+       opacity: 0;
+       }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <div style="width: 200px;height: 40px;">
+            <button @click="bool = !bool">点击</button>
+            <transition name="slide-fade">
+                <h1 v-text="txt" v-show="bool"></h1>
+            </transition>
+        </div>
+    </div>
+    <script src="../vue.2.6.js"></script>
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                txt: "你好",
+                bool: false
+            },
+
+        })
+    </script>
+</body>
+
+</html>
